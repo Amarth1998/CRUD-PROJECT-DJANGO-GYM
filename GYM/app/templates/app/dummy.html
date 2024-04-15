@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Forms</h2>
+<!-- enctype="multipart/form-data"  this is for image only  -->
+<form action="{% url 'update' data.id %} "  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <label for="fname">First name:</label><br>
+  <input type="text"  name="fname"  value="{{data.name}}"><br><br>
+
+  <label for="lname">Last name:</label><br>
+ -  <input type="text"  name="lname"  value="{{data.lname}}" ><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email"  name="email" value="{{data.email}}"><br><br>
+
+  <label for="age">Age:</label><br>
+  <input type="text"  name="age" value="{{data.age}}"><br><br>
+
+  <label >Aadhar Number:</label><br>
+  <input type="text"  name="identity" value="{{data.identity}}"><br><br>
+
+  <label for="image">Image:</label><br>
+  <img src="{{data.image.url}}" width="100px" >
+  <input type="file"  name="image"  ><br><br>
+
+  <input type="submit" value="Submit"> 
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+</body>
+</html>

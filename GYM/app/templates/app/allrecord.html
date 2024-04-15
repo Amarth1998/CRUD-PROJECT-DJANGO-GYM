@@ -1,0 +1,74 @@
+{% extends 'app/index.html' %} {% load static %} {% block body %}
+<section
+  class="hero d-flex flex-column "
+  style="background: none">
+  <div class="container">
+    <!-- <h1>{{a}}</h1> -->
+    <center>
+      <h1> This is Django Porject </h1>
+      <a href="{% url 'adminDashboard' %}" style="font-size: 25px; text-decoration: underline;">Insert record</a> &nbsp; &nbsp; &nbsp;
+      <a href="{% url 'allrecord' %}" style="font-size: 25px;text-decoration: underline;">Show All Record</a>
+  </center>
+    
+        <table id="customers">
+          
+            <tr>
+                <th>Name</th>
+                
+                <th>Email</th>
+                <th>Age</th>
+                <th>Aadhar Number</th>
+                <th>Image</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        
+         {% for i in  data %}
+            <tr>
+                <td>{{i.name}} {{i.lname}}</td>
+                
+                <td>{{i.email}}</td>
+                <td>{{i.age}} </td>
+                <td>{{i.identity}} </td>
+                <td><img src="{{i.image.url}}" width="100px" ></td>
+                <td><a href="{% url 'update' i.id %}">UPDATE</a></td>
+                <td><a href="{% url 'delete' i.id %}">DELETE</a></td>
+            </tr>
+          {% endfor %}
+            
+          
+        </table>
+      </div>
+    </section>
+
+
+        <style> 
+          #customers {
+              font-family: Arial, Helvetica, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+              margin-top: 2%;
+             
+              text-align: center;
+            }
+            
+            #customers td, #customers th {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: center;
+            }
+            
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+            
+            #customers tr:hover {background-color: #ddd;}
+            
+            #customers th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: black;
+              color: white;
+              text-align: center;
+            }
+          </style>
+  {% endblock %}
